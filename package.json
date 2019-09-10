@@ -1,0 +1,39 @@
+{
+  "name": "API-REST-to-justify-text",
+  "description": "Implémentation et déployement d'une API REST qui justifie un texte passé en paramètre.",
+  "author": "Naoufal <naoufalelhassnaoui@gmail.com>",
+  "repository": "https://github.com/naoufalelh/API-REST-to-justify-text.git",
+  "license": "UNLICENSED",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=9.11.2"
+  },
+  "main": "server.mjs",
+  "scripts": {
+    "docs": "swagger-jsdoc -d swaggerDef.js -o doc.json src/rest/*.mjs",
+    "start": "source ./init.sh && nodemon server.mjs",
+    "_test": "mocha -R spec --slow 1200 --colors --require ./tests/config.js --timeout 30000 ./tests/specs/**/*.spec.js",
+    "test": "source ./init.sh && NODE_ENV=localtest yarn run dbreset && NODE_ENV=localtest yarn run dbmigrate && NODE_ENV=localtest yarn run _test"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.7.0"
+  },
+  "dependencies": {
+    "config": "^3.0.0",
+    "joi": "^13.6.0",
+    "koa": "^2.6.2",
+    "koa-bodyparser": "^4.2.1",
+    "koa-convert": "^1.2.0",
+    "koa-cors": "^0.0.16",
+    "koa-helmet": "^4.0.0",
+    "koa-mount": "^4.0.0",
+    "koa-qs": "^2.0.0",
+    "koa-router": "^7.4.0",
+    "mocha": "^5.2.0",
+    "node-fetch": "2.1.2",
+    "nodemon": "^1.18.7",
+    "swagger-jsdoc": "^3.2.3"
+  }
+}
